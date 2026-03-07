@@ -8,6 +8,9 @@ import type {
   Attendance,
   Announcement,
   HostelRule,
+  CheckInOut,
+  LeaveApplication,
+  Visitor,
   DashboardStats,
   StudentDashboardStats,
   StudentFormData,
@@ -16,6 +19,9 @@ import type {
   MaintenanceFormData,
   AnnouncementFormData,
   HostelRuleFormData,
+  CheckInOutFormData,
+  LeaveApplicationFormData,
+  VisitorFormData,
   AttendanceFormData,
 } from '@/types';
 
@@ -574,6 +580,200 @@ export async function toggleHostelRuleStatus(id: string, isActive: boolean): Pro
     .from('hostel_rules')
     .update({ is_active: isActive })
     .eq('id', id);
+
+  if (error) throw error;
+}
+
+// Check In/Out API
+export async function getCheckInOutRecords(): Promise<CheckInOut[]> {
+  const { data, error } = await supabase
+    .from('check_in_out')
+    .select('*, student:students!check_in_out_student_id_fkey(*)')
+    .order('date', { ascending: false })
+    .order('created_at', { ascending: false });
+
+  if (error) throw error;
+  return Array.isArray(data) ? data : [];
+}
+
+export async function getCheckInOutByStudentId(studentId: string): Promise<CheckInOut[]> {
+  const { data, error } = await supabase
+    .from('check_in_out')
+    .select('*')
+    .eq('student_id', studentId)
+    .order('date', { ascending: false });
+
+  if (error) throw error;
+  return Array.isArray(data) ? data : [];
+}
+
+export async function getTodayCheckIns(): Promise<CheckInOut[]> {
+  const today = new Date().toISOString().split('T')[0];
+  const { data, error } = await supabase
+    .from('check_in_out')
+    .select('*, student:students!check_in_out_student_id_fkey(*)')
+    .eq('date', today)
+    .order('created_at', { ascending: false });
+
+  if (error) throw error;
+  return Array.isArray(data) ? data : [];
+}
+
+export async function createCheckInOut(formData: CheckInOutFormData): Promise<void> {
+  const { error } = await supabase.from('check_in_out').insert([formData]);
+
+  if (error) throw error;
+}
+
+export async function updateCheckInOut(
+  id: string,
+  formData: Partial<CheckInOutFormData>
+): Promise<void> {
+  const { error } = await supabase.from('check_in_out').update(formData).eq('id', id);
+
+  if (error) throw error;
+}
+
+// Leave Applications API
+export async function getLeaveApplications(): Promise<LeaveApplication[]> {
+  const { data, error } = await supabase
+    .from('leave_applications')
+    .select('*, student:students!leave_applications_student_id_fkey(*), approver:profiles!leave_applications_approved_by_fkey(*)')
+    .order('created_at', { ascending: false });
+
+  if (error) throw error;
+  return Array.isArray(data) ? data : [];
+}
+
+export async function getLeaveApplicationsByStudentId(studentId: string): Promise<LeaveApplication[]> {
+  const { data, error } = await supabase
+    .from('leave_applications')
+    .select('*')
+    .eq('student_id', studentId)
+    .order('created_at', { ascending: false });
+
+  if (error) throw error;
+  return Array.isArray(data) ? data : [];
+}
+
+export async function getPendingLeaveApplications(): Promise<LeaveApplication[]> {
+  const { data, error } = await supabase
+    .from('leave_applications')
+    .select('*, student:students!leave_applications_student_id_fkey(*)')
+    .eq('status', 'pending')
+    .order('created_at', { ascending: false });
+
+  if (error) throw error;
+  return Array.isArray(data) ? data : [];
+}
+
+export async function createLeaveApplication(
+  formData: LeaveApplicationFormData,
+  studentId: string
+): Promise<void> {
+  const { error } = await supabase.from('leave_applications').insert([
+    {
+      ...formData,
+      student_id: studentId,
+    },
+  ]);
+
+  if (error) throw error;
+}
+
+export async function updateLeaveApplicationStatus(
+  id: string,
+  status: string,
+  adminRemarks: string,
+  approvedBy: string
+): Promise<void> {
+  const { error } = await supabase
+    .from('leave_applications')
+    .update({
+      status,
+      admin_remarks: adminRemarks,
+      approved_by: approvedBy,
+      approved_at: new Date().toISOString(),
+    })
+    .eq('id', id);
+
+  if (error) throw error;
+}
+
+// Visitors API
+export async function getVisitors(): Promise<Visitor[]> {
+  const { data, error } = await supabase
+    .from('visitors')
+    .select('*, student:students!visitors_student_id_fkey(*)')
+    .order('check_in_time', { ascending: false });
+
+  if (error) throw error;
+  return Array.isArray(data) ? data : [];
+}
+
+export async function getVisitorsByStudentId(studentId: string): Promise<Visitor[]> {
+  const { data, error } = await supabase
+    .from('visitors')
+    .select('*')
+    .eq('student_id', studentId)
+    .order('check_in_time', { ascending: false });
+
+  if (error) throw error;
+  return Array.isArray(data) ? data : [];
+}
+
+export async function getActiveVisitors(): Promise<Visitor[]> {
+  const { data, error } = await supabase
+    .from('visitors')
+    .select('*, student:students!visitors_student_id_fkey(*)')
+    .eq('status', 'checked_in')
+    .order('check_in_time', { ascending: false });
+
+  if (error) throw error;
+  return Array.isArray(data) ? data : [];
+}
+
+export async function createVisitor(
+  formData: VisitorFormData,
+  studentId: string
+): Promise<void> {
+  const { error } = await supabase.from('visitors').insert([
+    {
+      ...formData,
+      student_id: studentId,
+    },
+  ]);
+
+  if (error) throw error;
+}
+
+export async function checkOutVisitor(id: string): Promise<void> {
+  const { error } = await supabase
+    .from('visitors')
+    .update({
+      status: 'checked_out',
+      check_out_time: new Date().toISOString(),
+    })
+    .eq('id', id);
+
+  if (error) throw error;
+}
+
+export async function updateVisitor(
+  id: string,
+  formData: Partial<VisitorFormData>
+): Promise<void> {
+  const { error } = await supabase.from('visitors').update(formData).eq('id', id);
+
+  if (error) throw error;
+}
+
+// User Role Management API
+export async function updateUserRole(userId: string, role: string): Promise<void> {
+  const { error } = await supabase
+    .from('profiles')
+    .update({ role })
+    .eq('id', userId);
 
   if (error) throw error;
 }

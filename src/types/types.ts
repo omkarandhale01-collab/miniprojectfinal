@@ -137,6 +137,65 @@ export interface HostelRule {
   updated_at: string;
 }
 
+// Check In/Out Types
+export type CheckInOutStatus = 'in' | 'out';
+
+export interface CheckInOut {
+  id: string;
+  student_id: string;
+  check_in_time: string | null;
+  check_out_time: string | null;
+  date: string;
+  status: CheckInOutStatus;
+  remarks: string | null;
+  created_at: string;
+  updated_at: string;
+  student?: Student;
+}
+
+// Leave Application Types
+export type LeaveType = 'sick' | 'casual' | 'emergency' | 'other';
+export type LeaveStatus = 'pending' | 'approved' | 'rejected';
+
+export interface LeaveApplication {
+  id: string;
+  student_id: string;
+  leave_type: LeaveType;
+  from_date: string;
+  to_date: string;
+  reason: string;
+  contact_during_leave: string | null;
+  status: LeaveStatus;
+  admin_remarks: string | null;
+  approved_by: string | null;
+  approved_at: string | null;
+  created_at: string;
+  updated_at: string;
+  student?: Student;
+  approver?: Profile;
+}
+
+// Visitor Types
+export type VisitorIdType = 'national_id' | 'passport' | 'driving_license' | 'other';
+export type VisitorStatus = 'checked_in' | 'checked_out';
+
+export interface Visitor {
+  id: string;
+  student_id: string;
+  visitor_name: string;
+  visitor_phone: string;
+  visitor_id_type: VisitorIdType;
+  visitor_id_number: string;
+  purpose: string;
+  check_in_time: string;
+  check_out_time: string | null;
+  status: VisitorStatus;
+  remarks: string | null;
+  created_at: string;
+  updated_at: string;
+  student?: Student;
+}
+
 // Dashboard Stats Types
 export interface DashboardStats {
   totalStudents: number;
@@ -211,6 +270,31 @@ export interface HostelRuleFormData {
   description: string;
   rule_type: RuleType;
   priority: number;
+}
+
+export interface CheckInOutFormData {
+  student_id: string;
+  date: string;
+  check_in_time?: string;
+  check_out_time?: string;
+  status: CheckInOutStatus;
+  remarks?: string;
+}
+
+export interface LeaveApplicationFormData {
+  leave_type: LeaveType;
+  from_date: string;
+  to_date: string;
+  reason: string;
+  contact_during_leave?: string;
+}
+
+export interface VisitorFormData {
+  visitor_name: string;
+  visitor_phone: string;
+  visitor_id_type: VisitorIdType;
+  visitor_id_number: string;
+  purpose: string;
 }
 
 export interface AttendanceFormData {

@@ -11,6 +11,10 @@ import {
   Megaphone,
   FileText,
   BookOpen,
+  LogIn,
+  FileCheck,
+  UserCheck,
+  Shield,
 } from 'lucide-react';
 
 interface AdminLayoutProps {
@@ -21,12 +25,16 @@ const navigation = [
   { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
   { name: 'Students', href: '/admin/students', icon: Users },
   { name: 'Rooms', href: '/admin/rooms', icon: DoorOpen },
+  { name: 'Check In/Out', href: '/admin/checkinout', icon: LogIn },
+  { name: 'Leave Applications', href: '/admin/leave', icon: FileCheck },
+  { name: 'Visitors', href: '/admin/visitors', icon: UserCheck },
   { name: 'Fees', href: '/admin/fees', icon: DollarSign },
   { name: 'Attendance', href: '/admin/attendance', icon: ClipboardCheck },
   { name: 'Maintenance', href: '/admin/maintenance', icon: Wrench },
   { name: 'Announcements', href: '/admin/announcements', icon: Megaphone },
   { name: 'Reports', href: '/admin/reports', icon: FileText },
   { name: 'Rules Management', href: '/admin/rules', icon: BookOpen },
+  { name: 'Admin Panel', href: '/admin/panel', icon: Shield },
 ];
 
 export function AdminLayout({ children }: AdminLayoutProps) {

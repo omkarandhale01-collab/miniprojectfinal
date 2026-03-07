@@ -1,17 +1,19 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import { LayoutDashboard, User, DoorOpen, DollarSign, Wrench, Megaphone, BookOpen } from 'lucide-react';
+import { Home, User, DoorOpen, DollarSign, Wrench, Megaphone, BookOpen, FileCheck, UserCheck } from 'lucide-react';
 
 interface StudentLayoutProps {
   children: React.ReactNode;
 }
 
 const navigation = [
-  { name: 'Dashboard', href: '/student/dashboard', icon: LayoutDashboard },
+  { name: 'Dashboard', href: '/student/dashboard', icon: Home },
   { name: 'Profile', href: '/student/profile', icon: User },
   { name: 'Room Info', href: '/student/room', icon: DoorOpen },
   { name: 'Fees', href: '/student/fees', icon: DollarSign },
+  { name: 'Leave Applications', href: '/student/leave', icon: FileCheck },
+  { name: 'My Visitors', href: '/student/visitors', icon: UserCheck },
   { name: 'Maintenance', href: '/student/maintenance', icon: Wrench },
   { name: 'Announcements', href: '/student/announcements', icon: Megaphone },
   { name: 'Hostel Rules', href: '/student/rules', icon: BookOpen },

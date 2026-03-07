@@ -26,6 +26,9 @@ Students have limited access to view their personal information and hostel-relat
 - Hostel resource management
 - Generate reports and statistics
 - Manage hostel rules and regulations
+- Check-in/Check-out management
+- Leave applications management
+- Visitor management
 
 ### 3.2 Student Interface Features
 - View personal room information
@@ -34,6 +37,8 @@ Students have limited access to view their personal information and hostel-relat
 - View hostel announcements and notices
 - Update personal profile information
 - View hostel rules and regulations
+- Submit leave applications
+- Check-in/Check-out status tracking
 
 ## 4. Technical Requirements
 
@@ -48,6 +53,9 @@ Database system required to store:
 - Maintenance requests
 - Attendance data
 - Hostel rules and regulations
+- Check-in/Check-out records
+- Leave application records
+- Visitor records
 
 ### 4.3 Authentication
 - Separate login systems for admin and student roles
@@ -60,6 +68,8 @@ Database system required to store:
 - Room assignment
 - Fee payment records
 - Attendance records
+- Check-in/Check-out history
+- Leave application history
 
 ### 5.2 Room Data
 - Room numbers and types
@@ -71,6 +81,9 @@ Database system required to store:
 - Hostel announcements
 - System reports
 - Hostel rules and regulations
+- Check-in/Check-out logs
+- Leave applications
+- Visitor logs
 
 ## 6. Hostel Rules and Regulations
 
@@ -86,9 +99,53 @@ Database system required to store:
 - Acknowledge reading of rules
 - Search rules by keyword
 
-## 7. Visual Elements
+## 7. Check-In/Check-Out Management
 
-### 7.1 Images
+### 7.1 Admin Features
+- Record student check-in and check-out times
+- View check-in/check-out history for all students
+- Generate check-in/check-out reports
+- Track student presence in hostel
+- Set check-in/check-out policies and time restrictions
+
+### 7.2 Student Features
+- View personal check-in/check-out history
+- Check current check-in/check-out status
+- Receive notifications about check-in/check-out requirements
+
+## 8. Leave Applications Management
+
+### 8.1 Admin Features
+- Review and approve/reject leave applications
+- View all pending and processed leave applications
+- Track student leave history
+- Generate leave reports
+- Set leave policies and approval workflows
+
+### 8.2 Student Features
+- Submit leave applications with details (dates, reason, destination)
+- View leave application status (pending, approved, rejected)
+- View leave application history
+- Receive notifications on application status updates
+
+## 9. Visitor Management
+
+### 9.1 Admin Features
+- Record visitor information (name, contact, purpose, visiting student)
+- Track visitor entry and exit times
+- View visitor logs and history
+- Generate visitor reports
+- Set visitor policies and restrictions
+- Approve or deny visitor requests
+
+### 9.2 Student Features
+- Register expected visitors in advance
+- View visitor history
+- Receive notifications when visitors arrive
+
+## 10. Visual Elements
+
+### 10.1 Images
 Incorporate images throughout the application interface, including:
 - Hostel building and facility images
 - Room type images
@@ -96,6 +153,7 @@ Incorporate images throughout the application interface, including:
 - Amenity images
 - Dashboard and interface decorative images
 - Hostel rules illustration images
+- Image reference: image.png
 
-### 7.2 Transition Effects
+### 10.2 Transition Effects
 Implement transition effects for enhanced user experience and smooth navigation between pages and interface elements
