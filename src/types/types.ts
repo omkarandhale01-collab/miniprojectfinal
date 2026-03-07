@@ -122,6 +122,21 @@ export interface Announcement {
   creator?: Profile;
 }
 
+// Hostel Rules Types
+export type RuleType = 'required' | 'prohibited' | 'info';
+
+export interface HostelRule {
+  id: string;
+  category: string;
+  title: string;
+  description: string;
+  rule_type: RuleType;
+  priority: number;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
 // Dashboard Stats Types
 export interface DashboardStats {
   totalStudents: number;
@@ -188,6 +203,14 @@ export interface AnnouncementFormData {
   content: string;
   priority: string;
   image_url?: string;
+}
+
+export interface HostelRuleFormData {
+  category: string;
+  title: string;
+  description: string;
+  rule_type: RuleType;
+  priority: number;
 }
 
 export interface AttendanceFormData {

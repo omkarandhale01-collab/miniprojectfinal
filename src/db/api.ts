@@ -7,6 +7,7 @@ import type {
   MaintenanceRequest,
   Attendance,
   Announcement,
+  HostelRule,
   DashboardStats,
   StudentDashboardStats,
   StudentFormData,
@@ -14,6 +15,7 @@ import type {
   FeeFormData,
   MaintenanceFormData,
   AnnouncementFormData,
+  HostelRuleFormData,
   AttendanceFormData,
 } from '@/types';
 
@@ -508,4 +510,70 @@ export async function getStudentDashboardStats(studentId: string): Promise<Stude
     maintenanceRequests: maintenanceRequests.length,
     recentAnnouncements: announcements.slice(0, 5).length,
   };
+}
+
+// Hostel Rules API
+export async function getHostelRules(): Promise<HostelRule[]> {
+  const { data, error } = await supabase
+    .from('hostel_rules')
+    .select('*')
+    .order('category', { ascending: true })
+    .order('priority', { ascending: true });
+
+  if (error) throw error;
+  return Array.isArray(data) ? data : [];
+}
+
+export async function getActiveHostelRules(): Promise<HostelRule[]> {
+  const { data, error } = await supabase
+    .from('hostel_rules')
+    .select('*')
+    .eq('is_active', true)
+    .order('category', { ascending: true })
+    .order('priority', { ascending: true });
+
+  if (error) throw error;
+  return Array.isArray(data) ? data : [];
+}
+
+export async function getHostelRulesByCategory(category: string): Promise<HostelRule[]> {
+  const { data, error } = await supabase
+    .from('hostel_rules')
+    .select('*')
+    .eq('category', category)
+    .eq('is_active', true)
+    .order('priority', { ascending: true });
+
+  if (error) throw error;
+  return Array.isArray(data) ? data : [];
+}
+
+export async function createHostelRule(formData: HostelRuleFormData): Promise<void> {
+  const { error } = await supabase.from('hostel_rules').insert([formData]);
+
+  if (error) throw error;
+}
+
+export async function updateHostelRule(
+  id: string,
+  formData: Partial<HostelRuleFormData>
+): Promise<void> {
+  const { error } = await supabase.from('hostel_rules').update(formData).eq('id', id);
+
+  if (error) throw error;
+}
+
+export async function deleteHostelRule(id: string): Promise<void> {
+  const { error } = await supabase.from('hostel_rules').delete().eq('id', id);
+
+  if (error) throw error;
+}
+
+export async function toggleHostelRuleStatus(id: string, isActive: boolean): Promise<void> {
+  const { error } = await supabase
+    .from('hostel_rules')
+    .update({ is_active: isActive })
+    .eq('id', id);
+
+  if (error) throw error;
 }

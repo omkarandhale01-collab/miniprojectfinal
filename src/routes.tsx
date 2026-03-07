@@ -8,14 +8,14 @@ import AttendanceTracking from './pages/admin/AttendanceTracking';
 import MaintenanceManagement from './pages/admin/MaintenanceManagement';
 import AnnouncementsManagement from './pages/admin/AnnouncementsManagement';
 import ReportsPage from './pages/admin/ReportsPage';
-import HostelRulesPage from './pages/admin/HostelRulesPage';
+import HostelRulesManagement from './pages/admin/HostelRulesManagement';
 import StudentDashboard from './pages/student/StudentDashboard';
 import StudentProfile from './pages/student/StudentProfile';
 import StudentRoomInfo from './pages/student/StudentRoomInfo';
 import StudentFees from './pages/student/StudentFees';
 import StudentMaintenance from './pages/student/StudentMaintenance';
 import StudentAnnouncements from './pages/student/StudentAnnouncements';
-import StudentHostelRules from './pages/student/StudentHostelRules';
+import StudentRulesPage from './pages/student/StudentRulesPage';
 import type { ReactNode } from 'react';
 
 interface RouteConfig {
@@ -78,9 +78,9 @@ const routes: RouteConfig[] = [
     element: <ReportsPage />,
   },
   {
-    name: 'Hostel Rules',
+    name: 'Hostel Rules Management',
     path: '/admin/rules',
-    element: <HostelRulesPage />,
+    element: <HostelRulesManagement />,
   },
   // Student Routes
   {
@@ -116,7 +116,7 @@ const routes: RouteConfig[] = [
   {
     name: 'Hostel Rules',
     path: '/student/rules',
-    element: <StudentHostelRules />,
+    element: <StudentRulesPage />,
   },
 ];
 

@@ -78,11 +78,13 @@ Database system required to store:
 - Create and edit hostel rules
 - Categorize rules by type (general conduct, safety, visitor policy, curfew, etc.)
 - Publish and update rules for student viewing
+- Delete or archive outdated rules
 
 ### 6.2 Rules Display (Student)
 - View complete list of hostel rules and regulations
 - Access rules by category
 - Acknowledge reading of rules
+- Search rules by keyword
 
 ## 7. Visual Elements
 

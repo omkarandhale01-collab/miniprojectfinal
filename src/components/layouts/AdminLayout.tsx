@@ -26,7 +26,7 @@ const navigation = [
   { name: 'Maintenance', href: '/admin/maintenance', icon: Wrench },
   { name: 'Announcements', href: '/admin/announcements', icon: Megaphone },
   { name: 'Reports', href: '/admin/reports', icon: FileText },
-  { name: 'Hostel Rules', href: '/admin/rules', icon: BookOpen },
+  { name: 'Rules Management', href: '/admin/rules', icon: BookOpen },
 ];
 
 export function AdminLayout({ children }: AdminLayoutProps) {
