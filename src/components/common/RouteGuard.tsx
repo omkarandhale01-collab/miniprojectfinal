@@ -7,7 +7,7 @@ interface RouteGuardProps {
 }
 
 // Please add the pages that can be accessed without logging in to PUBLIC_ROUTES.
-const PUBLIC_ROUTES = ['/login', '/403', '/404',"/"];
+const PUBLIC_ROUTES = ['/login', '/403', '/404'];
 
 function matchPublicRoute(path: string, patterns: string[]) {
   return patterns.some(pattern => {
@@ -20,7 +20,7 @@ function matchPublicRoute(path: string, patterns: string[]) {
 }
 
 export function RouteGuard({ children }: RouteGuardProps) {
-  const { user, loading } = useAuth();
+  const { user, profile, loading } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -31,8 +31,21 @@ export function RouteGuard({ children }: RouteGuardProps) {
 
     if (!user && !isPublic) {
       navigate('/login', { state: { from: location.pathname }, replace: true });
+      return;
     }
-  }, [user, loading, location.pathname, navigate]);
+
+    // Role-based route protection
+    if (user && profile) {
+      const isAdminRoute = location.pathname.startsWith('/admin');
+      const isStudentRoute = location.pathname.startsWith('/student');
+
+      if (isAdminRoute && profile.role !== 'admin') {
+        navigate('/student/dashboard', { replace: true });
+      } else if (isStudentRoute && profile.role !== 'student') {
+        navigate('/admin/dashboard', { replace: true });
+      }
+    }
+  }, [user, profile, loading, location.pathname, navigate]);
 
   if (loading) {
     return (
