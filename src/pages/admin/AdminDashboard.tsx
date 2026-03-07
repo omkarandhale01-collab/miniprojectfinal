@@ -158,6 +158,56 @@ export default function AdminDashboard() {
             </CardContent>
           </Card>
         </div>
+
+        <div className="grid gap-4 md:grid-cols-3">
+          <Card className="overflow-hidden">
+            <img
+              src="https://miaoda-site-img.s3cdn.medo.dev/images/KLing_1fc4602b-37ef-4092-877d-92363b175e18.jpg"
+              alt="Hostel Building"
+              className="w-full h-48 object-cover"
+            />
+            <CardHeader>
+              <CardTitle className="text-base">Modern Facilities</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                State-of-the-art hostel infrastructure with all modern amenities
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="overflow-hidden">
+            <img
+              src="https://miaoda-site-img.s3cdn.medo.dev/images/KLing_43b799b2-9038-462e-94f1-ec23e7518ea8.jpg"
+              alt="Reception"
+              className="w-full h-48 object-cover"
+            />
+            <CardHeader>
+              <CardTitle className="text-base">24/7 Reception</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Round-the-clock reception and support services for all residents
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="overflow-hidden">
+            <img
+              src="https://miaoda-site-img.s3cdn.medo.dev/images/KLing_892b012b-eac9-4f3b-a755-e9d4f463fb7a.jpg"
+              alt="Security"
+              className="w-full h-48 object-cover"
+            />
+            <CardHeader>
+              <CardTitle className="text-base">Secure Environment</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Advanced security systems ensuring safety of all residents
+              </p>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </AdminLayout>
   );

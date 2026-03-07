@@ -1,4 +1,5 @@
 import LoginPage from './pages/LoginPage';
+import LandingPage from './pages/LandingPage';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import StudentsManagement from './pages/admin/StudentsManagement';
 import RoomsManagement from './pages/admin/RoomsManagement';
@@ -7,12 +8,14 @@ import AttendanceTracking from './pages/admin/AttendanceTracking';
 import MaintenanceManagement from './pages/admin/MaintenanceManagement';
 import AnnouncementsManagement from './pages/admin/AnnouncementsManagement';
 import ReportsPage from './pages/admin/ReportsPage';
+import HostelRulesPage from './pages/admin/HostelRulesPage';
 import StudentDashboard from './pages/student/StudentDashboard';
 import StudentProfile from './pages/student/StudentProfile';
 import StudentRoomInfo from './pages/student/StudentRoomInfo';
 import StudentFees from './pages/student/StudentFees';
 import StudentMaintenance from './pages/student/StudentMaintenance';
 import StudentAnnouncements from './pages/student/StudentAnnouncements';
+import StudentHostelRules from './pages/student/StudentHostelRules';
 import type { ReactNode } from 'react';
 
 interface RouteConfig {
@@ -23,6 +26,11 @@ interface RouteConfig {
 }
 
 const routes: RouteConfig[] = [
+  {
+    name: 'Home',
+    path: '/',
+    element: <LandingPage />,
+  },
   {
     name: 'Login',
     path: '/login',
@@ -69,6 +77,11 @@ const routes: RouteConfig[] = [
     path: '/admin/reports',
     element: <ReportsPage />,
   },
+  {
+    name: 'Hostel Rules',
+    path: '/admin/rules',
+    element: <HostelRulesPage />,
+  },
   // Student Routes
   {
     name: 'Student Dashboard',
@@ -99,6 +112,11 @@ const routes: RouteConfig[] = [
     name: 'Announcements',
     path: '/student/announcements',
     element: <StudentAnnouncements />,
+  },
+  {
+    name: 'Hostel Rules',
+    path: '/student/rules',
+    element: <StudentHostelRules />,
   },
 ];
 

@@ -86,6 +86,12 @@ export default function StudentRoomInfo() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
+            <img
+              src="https://miaoda-site-img.s3cdn.medo.dev/images/KLing_d892adf4-ee44-4995-8991-b6cbd674258b.jpg"
+              alt="Room Amenities"
+              className="w-full h-64 object-cover rounded-lg"
+            />
+
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="space-y-1">
                 <p className="text-sm text-muted-foreground">Room Type</p>
@@ -130,19 +136,37 @@ export default function StudentRoomInfo() {
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Room Guidelines</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-2 text-sm">
-            <p>• Keep the room clean and tidy at all times</p>
-            <p>• Report any maintenance issues immediately</p>
-            <p>• Respect quiet hours (10 PM - 7 AM)</p>
-            <p>• No smoking or alcohol in the rooms</p>
-            <p>• Visitors must be registered at the reception</p>
-            <p>• Pay monthly fees on time to avoid penalties</p>
-          </CardContent>
-        </Card>
+        <div className="grid gap-4 md:grid-cols-2">
+          <Card className="overflow-hidden">
+            <img
+              src="https://miaoda-site-img.s3cdn.medo.dev/images/KLing_b7f83c91-63fb-44ac-a82e-a2f3bc2c9321.jpg"
+              alt="Bathroom"
+              className="w-full h-48 object-cover"
+            />
+            <CardHeader>
+              <CardTitle className="text-base">Clean Facilities</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Well-maintained bathroom facilities with regular cleaning services
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Room Guidelines</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2 text-sm">
+              <p>• Keep the room clean and tidy at all times</p>
+              <p>• Report any maintenance issues immediately</p>
+              <p>• Respect quiet hours (10 PM - 7 AM)</p>
+              <p>• No smoking or alcohol in the rooms</p>
+              <p>• Visitors must be registered at the reception</p>
+              <p>• Pay monthly fees on time to avoid penalties</p>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </StudentLayout>
   );

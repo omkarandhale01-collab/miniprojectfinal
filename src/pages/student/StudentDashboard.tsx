@@ -209,6 +209,40 @@ export default function StudentDashboard() {
             </CardContent>
           </Card>
         </div>
+
+        <div className="grid gap-4 md:grid-cols-2">
+          <Card className="overflow-hidden">
+            <img
+              src="https://miaoda-site-img.s3cdn.medo.dev/images/KLing_4b2b929b-7571-4ee6-acf2-b74a6263bd25.jpg"
+              alt="Hostel Room"
+              className="w-full h-48 object-cover"
+            />
+            <CardHeader>
+              <CardTitle className="text-base">Comfortable Rooms</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Clean and comfortable living spaces with all essential amenities
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="overflow-hidden">
+            <img
+              src="https://miaoda-site-img.s3cdn.medo.dev/images/KLing_832175ab-e42a-464d-9943-c855486808d9.jpg"
+              alt="Study Together"
+              className="w-full h-48 object-cover"
+            />
+            <CardHeader>
+              <CardTitle className="text-base">Study Environment</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Collaborative spaces for group study and academic excellence
+              </p>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </StudentLayout>
   );

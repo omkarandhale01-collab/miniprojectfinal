@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import { LayoutDashboard, User, DoorOpen, DollarSign, Wrench, Megaphone } from 'lucide-react';
+import { LayoutDashboard, User, DoorOpen, DollarSign, Wrench, Megaphone, BookOpen } from 'lucide-react';
 
 interface StudentLayoutProps {
   children: React.ReactNode;
@@ -14,6 +14,7 @@ const navigation = [
   { name: 'Fees', href: '/student/fees', icon: DollarSign },
   { name: 'Maintenance', href: '/student/maintenance', icon: Wrench },
   { name: 'Announcements', href: '/student/announcements', icon: Megaphone },
+  { name: 'Hostel Rules', href: '/student/rules', icon: BookOpen },
 ];
 
 export function StudentLayout({ children }: StudentLayoutProps) {
